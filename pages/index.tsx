@@ -35,7 +35,7 @@ export default function Home() {
           <Box display="flex" mb={2}>
             <TextField
               fullWidth
-              label="今何してるの？"
+              label="今何してる？"
               variant="outlined"
               value={tweet}
               onChange={(e) => setTweet(e.target.value)}
