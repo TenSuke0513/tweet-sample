@@ -125,10 +125,10 @@ export default function Home() {
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setEditTweet(null)} color="primary">
-              Cancel
+              削除
             </Button>
             <Button onClick={handleUpdateTweet} color="primary">
-              Save
+              保存
             </Button>
           </DialogActions>
         </Dialog>
