@@ -1,11 +1,11 @@
+// Home.tsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Box, TextField, Button, Card, CardContent, Typography, Grid, IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import { Container, Box, TextField, Button, Grid, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import Header from './components/Header';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './components/theme';
+import Tweet from './components/Tweet';
 
 const API_URL = 'http://localhost:3001/tweets';
 
@@ -88,21 +88,7 @@ export default function Home() {
           <Grid container spacing={2}>
             {tweets.map((tweet) => (
               <Grid item xs={12} key={tweet.id}>
-                <Card>
-                  <CardContent>
-                    <Box display="flex" alignItems="center">
-                      <Typography variant="body1" sx={{ flexGrow: 1 }}>
-                        {tweet.body}
-                      </Typography>
-                      <IconButton onClick={() => handleEditTweet(tweet)}>
-                        <EditIcon />
-                      </IconButton>
-                      <IconButton onClick={() => handleDeleteTweet(tweet.id)}>
-                        <DeleteIcon />
-                      </IconButton>
-                    </Box>
-                  </CardContent>
-                </Card>
+                <Tweet tweet={tweet} onEdit={handleEditTweet} onDelete={handleDeleteTweet} />
               </Grid>
             ))}
           </Grid>
@@ -125,7 +111,7 @@ export default function Home() {
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setEditTweet(null)} color="primary">
-              削除
+              キャンセル
             </Button>
             <Button onClick={handleUpdateTweet} color="primary">
               保存
